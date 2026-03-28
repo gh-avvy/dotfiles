@@ -1,0 +1,62 @@
+/* Estilos generales */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+/* LA BARRA PRINCIPAL (Transparente) */
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.5); /* El 0.5 es la transparencia */
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* ESTILO DE LOS BOTONES (Módulos redondeados) */
+#workspaces,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#tray {
+    background-color: #313244; /* Color de fondo del "botón" */
+    padding: 0 15px;
+    margin: 4px 4px;           /* Margen para que se vean separados */
+    border-radius: 15px;       /* Forma redondeada / Píldora */
+    color: #cdd6f4;
+}
+
+/* Personalización específica para Workspaces */
+#workspaces button {
+    padding: 0 5px;
+    color: #cdd6f4;
+}
+
+#workspaces button.active {
+    color: #89b4fa;
+    border-bottom: 2px solid #89b4fa; /* Una pequeña línea bajo el activo */
+}
+
+#workspaces button.focused {
+    background-color: #45475a;
+}
+
+#workspaces button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+/* Nerd Fonds que voy a cambiar cuando me acuerde */
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font Mono", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
