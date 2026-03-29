@@ -32,6 +32,7 @@
         "battery#bat2",
         "tray",
         "custom/power",
+	"bluetooth",
 	"custom/orbit"
     ],
     // Modules configuration
@@ -118,7 +119,8 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": false,
+	"on-click": "kitty --class btop-terminal -e btop"
     },
     "memory": {
         "format": "{}% "
@@ -134,7 +136,8 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+	"on-click": "clight-gui"
     },
     "battery": {
         "states": {
@@ -169,10 +172,12 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"on-click": "nm-connection-editor"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
+	"on-click": "pavucontrol",
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
@@ -213,6 +218,10 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		},
+	"bluetooth": {
+        	"format": " {status}",
+        	"on-click": "blueman-manager"
+    		},
 	"custom/orbit": {
 		"exec": "orbit waybar-status",
 		"return-type": "json",
