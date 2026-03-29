@@ -11,9 +11,9 @@ PACKAGES=(
     hyprland hyprshot hyprlock hypriddle  waybar kitty rofi-wayland 
     swww pipewire wireplumber qt6-wayland 
     qt6ct ttf-font-awesome ttf-jetbrains-mono-nerd
-    neofetch dolphin grim slurp wf-recorder libnotify blueman
-    pavucontrol network-manager-applet brightnessctl btop ranger
-    dolphin clight-gui
+    fastfetch dolphin grim slurp wf-recorder libnotify pavucontrol blueman
+    network-manager-applet brightnessctl btop ranger ripgrep thefuck exa
+     
 )
 
 if ! command -v yay &> /dev/null; then
