@@ -1,5 +1,14 @@
 // -*- mode: jsonc -*-
 {
+	"layer": "top", // Waybar en la capa superior
+    "position": "top", // Posición de la barra
+    "height": 30, // Altura de la barra
+    
+    // Aquí es donde agregas los márgenes para el efecto "flotante"
+    "margin-top": 5,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 0,
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
@@ -21,19 +30,19 @@
     ],
     "modules-right": [
         "mpd",
-        "idle_inhibitor",
+    //  "idle_inhibitor",
         "pulseaudio",
-        "network",
+    //  "network",
         "power-profiles-daemon",
         "backlight",
         "keyboard-state",
     //  "hyprland/language",
         "battery",
-        "battery#bat2",
-        "tray",
-        "custom/power",
-	"bluetooth",
-	"custom/orbit"
+    //  "battery#bat2",
+    //  "bluetooth",
+	"custom/orbit",
+	"tray",
+        "custom/power"
     ],
     // Modules configuration
     // hyprland/workspaces": {
@@ -107,10 +116,10 @@
     "tray": {
         // "icon-size": 21,
         "spacing": 10,
-        // "icons": {
-        //   "blueman": "bluetooth",
+         "icons": {
+           "blueman": "bluetooth"
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
+	}
     },
     "clock": {
     "timezone": "America/Argentina/Buenos_Aires",
@@ -196,39 +205,36 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
-    "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		},
+	"custom/media": {
+	"format": "{icon} {text}",
+	"return-type": "json",
+	"max-length": 40,
+	"format-icons": {
+        "spotify": "",
+        "default": "🎜"
+	},
+	"escape": true,
+	"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' --follow"
+	},
 	"bluetooth": {
-        	"format": " {status}",
-        	"on-click": "blueman-manager"
-    		},
+        "format": " {status}",
+        "format-disabled": " off",
+        "format-connected": " {device_alias}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+	},
 	"custom/orbit": {
-		"exec": "orbit waybar-status",
-		"return-type": "json",
-		"interval": 10,
-		"on-click": "orbit toggle top-right",
-    		"format": "󱗿"
+        "exec": "orbit waybar-status",
+        "return-type": "json",
+        "interval": 10,
+        "on-click": "orbit toggle top-right",
+        "format": "󱗿"
+	},
+	"custom/power": {
+        "format": "⏻ ",
+        "tooltip": false,
+        "on-click": "wlogout" // O tu script de apagado
 	}
-    }
 }

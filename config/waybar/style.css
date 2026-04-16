@@ -9,7 +9,7 @@
 
 /* LA BARRA PRINCIPAL (Transparente) */
 window#waybar {
-    background-color: rgba(26, 27, 38, 0.5); /* El 0.5 es la transparencia */
+    background-color: rgba(0, 0, 0, 0); /* El 0.5 es la transparencia */
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -23,33 +23,37 @@ window#waybar {
 #network,
 #cpu,
 #memory,
+#custom-media,
+#backlight,
+#window,
+#custom-power,
+#custom-orbit,
 #tray {
-    background-color: #313244; /* Color de fondo del "botón" */
-    padding: 0 15px;
+    background-color: rgba(20, 20, 20, 08);
+    padding: 0 10px;
     margin: 4px 4px;           /* Margen para que se vean separados */
-    border-radius: 15px;       /* Forma redondeada / Píldora */
+    border-radius: 6px;       /* Forma redondeada / Píldora */
     color: #cdd6f4;
+    border: 2px solid #ff0000;
 }
 
-/* Personalización específica para Workspaces */
 #workspaces button {
     padding: 0 5px;
     color: #cdd6f4;
 }
 
+#workspaces button.focused,
 #workspaces button.active {
-    color: #89b4fa;
-    border-bottom: 2px solid #89b4fa; /* Una pequeña línea bajo el activo */
-}
-
-#workspaces button.focused {
-    background-color: #45475a;
+    background-color: #ff0000;
+    color: #000000;
+    border-radius: 4px;
 }
 
 #workspaces button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
     box-shadow: inherit;
     text-shadow: inherit;
+    background: rgba(255, 0, 0, 0.4);
+    border-color: #ff0000;
 }
 
 /* Nerd Fonds que voy a cambiar cuando me acuerde */
